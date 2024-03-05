@@ -96,14 +96,6 @@ middle_column.dataframe(df[(df['work_year']==2021)]['salary_in_usd'].describe())
 right_column.subheader("Details for 2022")
 right_column.dataframe(df[(df['work_year']==2022)]['salary_in_usd'].describe())
 
-# Experience Level for total [PIE CHART]
-ex_level = df['experience_level'].value_counts()
-figExpSize = px.pie(df, values=ex_level, names=df['experience_level'].unique(), title="<b>Pie chart on Experience Level for total</b>")
-
-st.plotly_chart(figExpSize)
-st.markdown("""From pie chart, we can see that **Senior-level/Expert** (46%) 
-is the most popular experience level in this dataset, and **Mid-level/Intermediate** ranked the next.
-There's only 4.28% of **Executive-level/Director**.""")
 
 # Experience Level for years [BAR CHART]
 ex_level_by_years= df.groupby(by=["work_year", 'experience_level']).size().reset_index()
