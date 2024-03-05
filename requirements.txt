@@ -1,0 +1,6 @@
+plotly.express
+streamlit
+pandas
+country_converter
+numpy
+plotly.graph_objects
