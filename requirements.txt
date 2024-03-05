@@ -3,4 +3,3 @@ pandas
 country_converter
 numpy
 plotly
-python
