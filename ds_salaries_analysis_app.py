@@ -1,8 +1,3 @@
-# @Email:  contact@pythonandvba.com
-# @Website:  https://pythonandvba.com
-# @YouTube:  https://youtube.com/c/CodingIsFun
-# @Project:  Sales Dashboard w/ Streamlit
-
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
 import pandas as pd  # pip install pandas openpyxl
@@ -103,10 +98,12 @@ right_column.dataframe(df[(df['work_year']==2022)]['salary_in_usd'].describe())
 
 # Experience Level for total [PIE CHART]
 ex_level = df['experience_level'].value_counts()
-figExpSize = px.pie(df, values=ex_level, names=df['experience_level'].unique(), color_discrete_sequence=px.colors.sequential.OrRd, title="<b>Pie chart on Experience Level for total</b>")
-#figExpSize = px.sunburst(ex_level, path=[ex_level['work_year'].unique(), ex_level['company_size'].unique()], values=ex_level['salary_in_usd'])
+figExpSize = px.pie(df, values=ex_level, names=df['experience_level'].unique(), 
+                    color_discrete_sequence=px.colors.sequential.OrRd, title="<b>Pie chart on Experience Level for total</b>")
+
 st.plotly_chart(figExpSize)
-st.markdown("""From pie chart, we can see that **Senior-level/Expert** (46%) is the most popular experience level in this dataset, and **Mid-level/Intermediate** ranked the next.
+st.markdown("""From pie chart, we can see that **Senior-level/Expert** (46%) 
+is the most popular experience level in this dataset, and **Mid-level/Intermediate** ranked the next.
 There's only 4.28% of **Executive-level/Director**.""")
 
 # Experience Level for years [BAR CHART]
@@ -115,13 +112,16 @@ ex_level_by_years.rename(columns={0: 'Values'}, inplace=True)
 ex_level_by_years = ex_level_by_years.pivot_table(index="work_year", values='Values', columns='experience_level')
 
 st.dataframe(ex_level_by_years)
-figExpSizeYear = px.bar(ex_level_by_years, x=["2020","2021", "2022"], y=['Entry-level/Junior', 'Mid-level/Intermediate', 'Senior-level/Expert','Executive-level/Director'], color_discrete_sequence=px.colors.sequential.OrRd, title='Pie chart on Experience Level for years')
+figExpSizeYear = px.bar(ex_level_by_years, x=["2020","2021", "2022"], 
+                        y=['Entry-level/Junior', 'Mid-level/Intermediate', 'Senior-level/Expert','Executive-level/Director'], 
+                        color_discrete_sequence=px.colors.sequential.OrRd, title='Pie chart on Experience Level for years')
 figExpSizeYear.update_layout(
     xaxis_title="Year",
     yaxis_title="Count",
     font = dict(size=14,family="Franklin Gothic"))
 st.plotly_chart(figExpSizeYear)
-st.markdown("""We can notice that **Senior-level/Expert** is the most popular experience level in 2022, and **Mid-level/Intermediate** was the most popular in 2021.
+st.markdown("""We can notice that **Senior-level/Expert** is the most popular experience level in 2022, 
+and **Mid-level/Intermediate** was the most popular in 2021.
 The least popular type is the **Executive-level/Directior**.""")
 # Top job title
 job_title_top = df_selection['job_title'].value_counts()[:10]
@@ -141,7 +141,8 @@ fig_top_job.update_layout(legend=dict(
 ))
 st.plotly_chart(fig_top_job)
 
-st.markdown("""We can notice that **Data Scientist**, **Data Engineer** and **Data Analyst** are top 3 frequent job titles almost in each year.""")
+st.markdown("""We can notice that **Data Scientist**, 
+**Data Engineer** and **Data Analyst** are top 3 frequent job titles almost in each year.""")
 
 # Top employee residence
 residence = df_selection['employee_residence'].value_counts()
@@ -161,7 +162,7 @@ fig_top_residence.update_layout(
 )
 
 st.plotly_chart(fig_top_residence)
-#######################################
+
 converted_country = coco.convert(names=df['employee_residence'], to="ISO3")
 df['employee_residence'] = converted_country
 residence2 = df['employee_residence'].value_counts()
@@ -171,7 +172,7 @@ fig_map = px.choropleth(locations=residence2.index,
                     title = "<b>Employee Loaction Distribution Map</b>")
 
 st.plotly_chart(fig_map)
-#######################################
+
 st.subheader("**Salary in USD**")
 #Salary in USD by company locations
 st.markdown("""For Total we can see that the highest average salary is in Russia and USA. Moreover, the increase in average wages 
@@ -195,8 +196,6 @@ fig_salaries.update_layout(
     yaxis_title="Company Location",
     font = dict(size=14,family="Franklin Gothic"))
 
-
-##############################
 #Salary in USD by experience level
 EX = df_selection.loc[(df_selection['experience_level'] == 'Executive-level/Director')]
 SE = df_selection.loc[(df_selection['experience_level'] == 'Senior-level/Expert')]
@@ -263,7 +262,7 @@ fig_categ.update_layout(
     legend={"title":"Experience Level"},
     font = dict(size=14,family="Franklin Gothic"))
 st.plotly_chart(fig_categ)
-########
+
 st.subheader("**Salary distribution**")
 
 salaries_perCompany = (df_selection.groupby(by=["company_size"]).sum()[["salary_in_usd"]])
@@ -279,5 +278,6 @@ fig_size.update_layout(
     legend={"title":"Company Size"} ,
     font = dict(size=14,family="Franklin Gothic"))
 st.plotly_chart(fig_size)
-st.markdown("""The distribution is right-skewed. It is the distribution with the longer right tail of the distribution, which means that we have a lot of observations that take values less than the mean.""")
+st.markdown("""The distribution is right-skewed. It is the distribution with the longer 
+right tail of the distribution, which means that we have a lot of observations that take values less than the mean.""")
 
