@@ -3,3 +3,4 @@ pandas
 country_converter
 numpy
 plotly
+openpyxl
