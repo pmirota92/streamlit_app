@@ -1,6 +1,6 @@
-plotly.express
-streamlit
-pandas
-country_converter
-numpy
-plotly.graph_objects
+streamlit 1.31.1
+pandas 1.4.2
+country_converter 1.2
+numpy 1.21.5
+plotly 5.6.0
+python 3.9.12
