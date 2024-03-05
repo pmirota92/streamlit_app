@@ -105,7 +105,7 @@ ex_level_by_years = ex_level_by_years.pivot_table(index="work_year", values='Val
 st.dataframe(ex_level_by_years)
 figExpSizeYear = px.bar(ex_level_by_years, x=["2020","2021", "2022"], 
                         y=['Entry-level/Junior', 'Mid-level/Intermediate', 'Senior-level/Expert','Executive-level/Director'], 
-                        color_discrete_sequence=px.colors.sequential.OrRd, title='Pie chart on Experience Level for years')
+                        color_discrete_sequence=px.colors.sequential.OrRd, title='Bar chart on Experience Level for years')
 figExpSizeYear.update_layout(
     xaxis_title="Year",
     yaxis_title="Count",
