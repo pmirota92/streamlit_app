@@ -6,3 +6,6 @@ This app performs simple salaries analysis in the Data Science domain!
 
 👉 **Check out the live website here:** :
 https://ds-salaries-analysis-app.streamlit.app/
+
+## Dashboard Demo
+![ streamlit_app](details/streamlit_app.gif)
