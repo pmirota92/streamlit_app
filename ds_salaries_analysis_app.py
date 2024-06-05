@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Salaries in 2020-2022", page_icon=":bar_chart:", layout="wide")
 
 # ---- MAINPAGE ----
-st.title(":bar_chart: Salaries of jobs in the Data Science domain")
+st.title(":bar_chart: Salaries in the Data Science domain")
 st.markdown("##")
 st.markdown("""
 This app performs simple salaries analysis in the Data Science domain!
